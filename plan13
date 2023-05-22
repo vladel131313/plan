@@ -1,0 +1,44 @@
+{
+  char op;
+  if (cin >> op)
+  {
+    double y;
+    if (cin >> y)
+    {
+      switch (op)
+      {
+      case '+': return infix(x + y);
+      case '-': return infix(x - y);
+      case '*': return infix(x * y);
+      case '/': return infix(x / y);
+      default:
+        cerr << "unknown operation '" << op << "'\n";
+        return x;
+      }
+    }
+    else
+      cerr << "number expected\n";
+  }
+  return x;
+}
+double infix()
+{
+  double x;
+  if (cin >> x)
+    return infix(x);
+
+  cerr << "number expected\n";
+  return 0.;
+}
+int main()
+{
+  while (true)
+  {
+    double answer = infix();
+    cin.clear();
+    cin.ignore(cin.rdbuf()->in_avail());
+    cin.sync();
+    cout << "answer = " << answer << endl;
+  }
+  return EXIT_SUCCESS;
+}
